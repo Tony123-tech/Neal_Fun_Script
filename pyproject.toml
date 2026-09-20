@@ -1,0 +1,23 @@
+[project]
+name = "scrap"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "Tony123-tech", email = "tony1225leung@gmail.com" }
+]
+requires-python = ">=3.10"
+dependencies = [
+    "drissionpage>=4.1.1.4",
+    "playwright>=1.63.0",
+    "pydub>=0.25.1",
+    "pytest>=9.1.1",
+    "speechrecognition>=3.17.0",
+]
+
+[project.scripts]
+scrap = "scrap:main"
+
+[build-system]
+requires = ["uv_build>=0.12.16,<0.13.0"]
+build-backend = "uv_build"
