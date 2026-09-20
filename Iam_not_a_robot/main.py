@@ -9,9 +9,6 @@ from config import GAME_URL, SELECTORS, TIMEOUTS, BROWSER
 from handlers import LEVEL_HANDLERS, LevelFailed
 
 
-# ══════════════════════════════════════
-#  Logging
-# ══════════════════════════════════════
 logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s [%(levelname)s] %(message)s",
@@ -20,9 +17,6 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 
-# ══════════════════════════════════════
-#  Helpers
-# ══════════════════════════════════════
 def get_level(page: Page) -> str:
     """Read the current level name, e.g. 'Level 1: Checkbox'."""
     try:
@@ -39,12 +33,9 @@ def _screenshot(page: Page, name: str) -> None:
         page.screenshot(path=f"error_{name}.png")
         logger.info(f"📸 Screenshot saved: error_{name}.png")
     except Exception:
-        pass  # Page may already be closed
+        pass
 
 
-# ══════════════════════════════════════
-#  Main loop
-# ══════════════════════════════════════
 def solve(page: Page) -> None:
     """Keep solving levels until no handler is found."""
     name = "unknown"
@@ -77,9 +68,6 @@ def solve(page: Page) -> None:
             break
 
 
-# ══════════════════════════════════════
-#  Entry point
-# ══════════════════════════════════════
 def main() -> None:
     with sync_playwright() as p:
         browser = p.chromium.launch(
@@ -90,6 +78,24 @@ def main() -> None:
             viewport=BROWSER["viewport"],
             locale=BROWSER["locale"],
         )
+
+        # ══════════════════════════════════════════════════════
+        #  Force getUserMedia to reject so that Level 39
+        #  (Facial Exam) sets noCamera = true automatically,
+        #  and macOS doesn't show the camera permission dialog.
+        # ══════════════════════════════════════════════════════
+        context.add_init_script("""
+            (() => {
+                if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+                    navigator.mediaDevices.getUserMedia = function() {
+                        return Promise.reject(
+                            new DOMException('Permission denied by automation', 'NotAllowedError')
+                        );
+                    };
+                }
+            })();
+        """)
+
         page = context.new_page()
 
         logger.info(f"Opening: {GAME_URL}")

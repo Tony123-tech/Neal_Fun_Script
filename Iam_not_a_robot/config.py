@@ -83,6 +83,75 @@ SELECTORS = {
     "eye_exam_container": ".eye-exam-container",
     "eye_exam_input":     ".eye-exam-input input",
     "eye_exam_square":    ".color-square",
+
+    # ── Level 25: Creativity ──
+    "express_canvas": "#express-canvas",
+
+    # ── Level 26: Parallel Parking ──
+    "park_canvas_26": "#park-canvas",
+
+    # ── Level 27: Networking ──
+    "flow_grid": ".flow-grid",
+    "flow_cell": ".flow-cell",
+    "flow_endpoint": ".endpoint",
+
+    # ── Level 28: Day Trader ──
+    "stock_buy_btn": ".stock-buy",
+    "stock_sell_btn": ".stock-sell",
+    "stock_graph": ".graph",
+
+    # ── Level 29: Soul ──
+    "soul_grid": ".grid-container",
+    "soul_item": ".grid-item",
+    "soul_image": ".soul-image",
+
+    # ── Level 30: Sliding Tiles ──
+    "sliding_container": ".puzzle-container",
+    "sliding_tile": ".puzzle-tile",
+    "sliding_empty": ".empty-tile",
+    "sliding_image": ".tile-image",
+
+    # ── Level 31: Traffic Tree ──
+    "traffic_tree_grid": ".grid-container",
+    "traffic_tree_item": ".grid-item",
+
+    # ── Level 32: Drum Verify ──
+    "drum_container": ".launchpad-container",
+    "drum_pad": ".dance-square",
+    "drum_grid_item": ".grid-item",
+
+    # ── Level 33: Brands ──
+    "brand_container": ".brands",
+    "brand_image": ".brand-letter",
+    "brand_input": ".captcha-input-text",
+    "brand_submit": ".captcha-button",
+
+    # ── Level 34: Mathematics ──
+    "math_grid": ".grid-container",
+    "math_grid_item": ".grid-item",
+    "math_actual": ".math-grid-term-actual",
+
+    # ── Level 35: Shuffle ──
+    "cups_container": ".cups-container",
+    "cup": ".cup",
+    "cup_ball": ".ball",
+    "cup_level_indicator": ".level-indicator-text",
+
+    # ── Level 36: Not Candy Crush ──
+    "match3_game": ".match3-game",
+    "match3_board": ".game-grid",
+    "match3_cell": ".candy-cell",
+    "match3_score": ".stat-item.score .stat-value",
+
+    # ── Level 37: Imposters ──
+    "imposters_grid": ".grid-container",
+    "imposters_item": ".grid-item",
+    "imposters_image": ".ai-generated",
+
+    # ── Level 39: Facial Exam ──
+    "facial_container": ".emotions-container",
+    "facial_video": ".webcam",
+    "facial_progress": ".progress-bar",
 }
 
 # ══════════════════════════════════════
