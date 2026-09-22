@@ -150,16 +150,13 @@ export const SELECTORS = {
 
   // ── Level 43: Ikea ──
   ikea_canvas: ".ikea-canvas",
+
   // ── Levels 29, 31, 37: Grids that reuse the generic .grid-item ──
-  // NOTE: All three reuse SELECTORS.grid_item — no dedicated selectors needed.
-  // Only the inner content differs (see `soul_image`, `tree_image`, `ai_generated`).
   soul_image:     "img.soul-image",
   traffic_tree_bg: "div.grid-item-with-image",
   ai_generated:   "img.ai-generated",
 
   // ── Level 33: Brands ──
-  // brand_input + brand_submit already exist in config.ts as
-  //   captcha_input / captcha_submit, but we alias them for clarity.
   brand_image:  "img.brand-letter",
   brand_input:  "input.captcha-input-text",
   brand_submit: "button.captcha-button",

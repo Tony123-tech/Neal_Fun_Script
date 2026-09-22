@@ -1,22 +1,16 @@
 # Neal.fun Scripts
 
 > A collection of educational Playwright scripts for [neal.fun](https://neal.fun) games,
-> demonstrating browser automation, Vue.js internals, and classic AI algorithms.
+> written in TypeScript. Demonstrates browser automation, Vue.js internals,
+> and classic AI algorithms.
 
-[![Python](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
-[![Playwright](https://img.shields.io/badge/playwright-1.40+-green.svg)](https://playwright.dev/python/)
-[![uv](https://img.shields.io/badge/managed%20by-uv-purple.svg)](https://github.com/astral-sh/uv)
+[![TypeScript](https://img.shields.io/badge/typescript-5.0+-blue.svg)](https://www.typescriptlang.org/)
+[![Playwright](https://img.shields.io/badge/playwright-1.40+-green.svg)](https://playwright.dev/)
+[![Node](https://img.shields.io/badge/node-20+-brightgreen.svg)](https://nodejs.org/)
 [![License](https://img.shields.io/badge/license-MIT-yellow.svg)](LICENSE)
 
-> ⚠️ **Educational Use Only**
->
-> This project is a **learning exercise** for browser automation,
-> Vue.js internals, and classic AI algorithms. It is **not intended**
-> to harm, disrupt, or compete with any service.
->
-> If you are a rights holder and want this removed, please
-> [open an issue](https://github.com/Tony123-tech/Neal_Fun_Script/issues)
-> and I will respond promptly.
+> **Note:** While the code is MIT-licensed, it is intended for
+> **educational, non-commercial use only**. Please see the [Disclaimer](#-disclaimer).
 
 ---
 
@@ -38,23 +32,23 @@
 ## 🎯 Overview
 
 This repository contains a collection of educational Playwright scripts
-for various [neal.fun](https://neal.fun) games.
+for various [neal.fun](https://neal.fun) games, written in TypeScript.
 
 | Game | Status | Technique |
 |------|--------|-----------|
-| **Not a Robot** | ✅ Complete (33 levels) | Vue.js internals + AI algorithms |
+| **Not a Robot** | ✅ Complete (39 levels) | Vue.js internals + AI algorithms |
 | *More games* | 🚧 Planned | TBD |
 
-Each script uses **Playwright** for browser automation and is managed
-with **uv** for fast, reproducible dependency management.
+Each script uses **Playwright** for browser automation and **Winston**
+for structured logging.
 
 ---
 
 ## 🎮 Games
 
-### ✅ Not a Robot (`iam_not_a_robot/`)
+### ✅ Not a Robot 
 
-Automatically solves all **33 levels** of the
+Automatically solves all **39 levels** of the
 [neal.fun "Not a Robot"](https://neal.fun/not-a-robot/) game.
 
 **Key techniques:**
@@ -64,10 +58,10 @@ Automatically solves all **33 levels** of the
 - 8-directional word search (Level 7)
 - Backtracking + Warnsdorff heuristic (Level 27)
 - BFS for sliding tiles (Level 30)
-- Pannellum panorama drag math (Level 23)
+- Pannellum panorama manipulation (Level 23)
 - Multi-step state machine (Level 24)
-- Event-driven waiting (`wait_for_function`)
-- Structured logging and error handling
+- Event-driven waiting (`waitForFunction`)
+- Structured logging with Winston
 
 **Levels covered:**
 
@@ -92,7 +86,7 @@ Automatically solves all **33 levels** of the
 | 17 | Perfect Circle | Vue `$data.score` override |
 | 18 | Sisyphus | Repeated element clicking |
 | 19 | In the Dark | DOM letter extraction |
-| 20 | Rorschach | Fixed answer (any works) |
+| 20 | Rorschach | Fixed answer |
 | 21 | CRAFTCHA | Vue flag override |
 | 22 | My Ducks Ahhh | Vue `$data.ducks` loop |
 | 23 | Panorama | Pannellum viewer manipulation |
@@ -106,86 +100,92 @@ Automatically solves all **33 levels** of the
 | 31 | Traffic Tree | Vue `$data.items` override / real clicks |
 | 32 | Drum Verify | `gameState = "success"` override |
 | 33 | Brands | Vue `$data.list` + DOM fallback |
+| 34 | Mathematics | Set `selectedOrder` / real clicks / verify override |
+| 35 | Shuffle | Set `level = 3` / verify override |
+| 36 | Not Candy Crush | Set `score = 1000` / handleVerify override |
+| 37 | Imposters | Set `Grid.items` / real clicks / verify override |
+| 38 | Tough Decisions | Same `<Park>` component as Level 15/26 |
+| 39 | Facial Exam | Force `noCamera = true` / verify override |
 
 ### 🚧 Planned Games
 
-The following neal.fun games are candidates for future scripts.
-Contributions welcome!
-
 - [Infinite Craft](https://neal.fun/infinite-craft/)
 - [Password Game](https://neal.fun/password-game/)
-- [Absurd Trolley Problem](https://neal.fun/absurd-trolley-problem/)
-- [Spend Bill Gates' Money](https://neal.fun/spend/)
-- [Draw a Perfect Circle](https://neal.fun/perfect-circle/)
+- [Absurd Trolley Problem](https://neal.fun/absurd-trolley-problems/)
 
-> **Note:** Not all neal.fun games are suitable for automation.
-> Only games that are purely single-player, offline-style puzzles
-> are considered. Games with real security implications (e.g. actual
-> CAPTCHAs protecting third-party services) are **out of scope**.
+> **Note:** Only purely single-player, offline-style puzzles are considered.
+> Games with real security implications are **out of scope**.
 
 ---
 
 ## 📋 Requirements
 
-- **Python** 3.10 or higher
-- **uv** (recommended) or pip
+- **Node.js** 20 or higher
+- **npm** or **pnpm** or **yarn**
 - **Playwright** with Chromium browser
+- **TypeScript** 5.0+
 
 ---
 
 ## 🔧 Installation
 
-### Step 1: Install `uv` (if not already installed)
-
-```bash
-# macOS / Linux
-curl -LsSf https://astral.sh/uv/install.sh | sh
-
-# Windows (PowerShell)
-powershell -c "irm https://astral.sh/uv/install.ps1 | iex"
-```
-
-### Step 2: Clone the repository
+### Step 1: Clone the repository
 
 ```bash
 git clone https://github.com/Tony123-tech/Neal_Fun_Script.git
 cd Neal_Fun_Script
 ```
 
-### Step 3: Install the dependencies
+### Step 2: Install dependencies
 
 ```bash
-uv sync
+npm install
+# or
+pnpm install
+# or
+yarn install
 ```
 
-### Step 4: Install Playwright browsers
+### Step 3: Install Playwright browsers
 
 ```bash
-uv run playwright install chromium
+npx playwright install chromium
+```
+
+### Step 4: Build (optional)
+
+```bash
+npm run build
 ```
 
 ---
 
 ## 🎮 Usage
 
-### Not a Robot
+### Development mode (ts-node / tsx)
 
 ```bash
-cd iam_not_a_robot
-python main.py
+npm run dev
+```
+
+### Production mode (compiled)
+
+```bash
+npm run build
+npm start
 ```
 
 The bot will:
 - Open Chromium (visible window)
 - Navigate to https://neal.fun/not-a-robot
-- Solve levels 1–33 automatically
+- Solve levels 1–39 automatically
 
 ### ⏱️ Expected Runtime
-- ~5–10 minutes for all 33 levels
-- Requires a visible browser window (headless=False)
+- ~5–10 minutes for all 39 levels
+- Requires a visible browser window (`headless: false`)
 
 ### 🛑 Stopping
-- Press Ctrl+C in the terminal, or close the browser window
+- Press `Ctrl+C` in the terminal, or close the browser window.
 
 ### ⚠️ Rate Limiting
 - Please run this at most once per day.
@@ -197,13 +197,13 @@ The bot will:
 ## 🧪 Testing
 
 ```bash
-uv run pytest
+npm test
 ```
 
-Currently covers the XOXO (tic-tac-toe) helper functions:
-- `_is_winner()` — win detection
-- `_best_move()` — optimal move selection
-- `_minimax()` — game tree evaluation
+Tests cover the XOXO (tic-tac-toe) helper functions:
+- `isWinner()` — win detection
+- `bestMove()` — optimal move selection
+- `minimax()` — game tree evaluation
 
 ---
 
@@ -211,34 +211,55 @@ Currently covers the XOXO (tic-tac-toe) helper functions:
 
 ```text
 Neal_Fun_Script/
-└── iam_not_a_robot/
-    ├── main.py          # Entry point
-    ├── config.py        # Selectors, timeouts, retry limits
-    ├── handlers.py      # 33 level solvers + registry
-    ├── helpers.py       # Shared Playwright/Vue helpers
-    └── test_xoxo.py     # Unit tests for XOXO
-```
-
-Future games will follow the same structure, e.g.:
-
-```text
-Neal_Fun_Script/
-├── iam_not_a_robot/
-└── infinite_craft/     # 🚧 Planned
-    ├── main.py
-    ├── config.py
-    └── ...
+├── src/
+│   ├── not-a-robot/
+│   │   ├── main.ts          # Entry point
+│   │   ├── config.ts        # Selectors, timeouts, retry limits
+│   │   ├── handlers.ts      # 39 level solvers + registry
+│   │   ├── helpers.ts       # Shared Playwright/Vue helpers
+│   │   └── logger.ts        # Winston logger
+│   └── ...
+├── tests/
+│   └── xoxo.test.ts         # Unit tests for XOXO
+├── package.json
+├── tsconfig.json
+├── playwright.config.ts
+└── README.md
 ```
 
 ---
 
 ## 🔍 How It Works
 
-Each game script follows the same general pattern:
-- **Level / state detection** — Read the current game state from the DOM
-- **Handler lookup** — Match against a registry of solvers
-- **Strategy** — Try direct Vue $data manipulation first, fall back to real DOM interaction
-- **Verification** — Click Verify and wait for state change
+Each level handler follows the same general pattern:
+- **Level detection** — Read the current level title from the DOM.
+- **Handler lookup** — Match against `LEVEL_HANDLERS` registry.
+- **Strategy (Hybrid)** — Try direct Vue `$data` manipulation first, fall back to real DOM interaction, then override `verify()`.
+- **Verification** — Click Verify and wait for level change.
+
+### The Hybrid Strategy
+Most advanced levels use a 3-tier fallback chain:
+
+```text
+Method 1: Direct $data mutation      →  Fast, but fragile
+    ↓ fails
+Method 2: Real DOM interaction       →  Slow, but authentic
+    ↓ fails
+Method 3: Override verify()          →  Bulletproof, but brute force
+```
+This pattern appears in levels 27–39.
+
+### Vue Internals Access
+```typescript
+const pageVm = document.querySelector('.page-container').__vue__;
+const inst = pageVm.$children.find(c =>
+  c.$options.data().someKey !== undefined
+);
+```
+Duck-typing to find the target component by its `$data` keys — no component names required.
+
+### Special Handling
+**Level 39 (Facial Exam):** `getUserMedia` is overridden in `main.ts` via `context.addInitScript()` to auto-reject, so `noCamera` becomes `true` and no camera permission dialog appears.
 
 ---
 
@@ -256,38 +277,16 @@ The techniques demonstrated here are meant to teach:
 - Browser automation with Playwright
 - Vue.js component internals
 - Classic AI algorithms (Minimax, BFS, backtracking)
+- TypeScript project structure
 
 ### 🛑 Please Respect the Developer
 neal.fun is a small independent project that relies on ad revenue. Running these scripts does not generate ad revenue for them.
 
 If you enjoy the games:
 - Play them legitimately
-- Share it with friends
+- Share them with friends
 - Support the developer
-
-
-### ⚖️ No Warranty
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-EXPRESS OR IMPLIED. The author is **not liable** for any damages
-or legal consequences arising from the use of this software.
-
-**You use this software at your own risk.**
-
-### 👤 User Responsibility
-
-By using this software, you agree that:
-
-- You are **solely responsible** for your own actions
-- You will **comply with all applicable laws** in your jurisdiction
-- You will **respect the Terms of Service** of any website you interact with
-- You will **not hold the author liable** for any consequences
-
-The author provides this code for **learning purposes only**
-and does **not condone** any misuse.
-
 
 Play the original games here: https://neal.fun/
 
 If you are a rights holder and want this removed, please contact me.
-

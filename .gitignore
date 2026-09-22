@@ -29,3 +29,5 @@ Thumbs.db
 
 # Project-specific
 error_*.png
+
+node_modules/
