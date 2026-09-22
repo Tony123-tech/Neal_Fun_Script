@@ -18,11 +18,10 @@ jobs:
       - name: 🟢 Setup Node.js (Modern OS Compliant)
         uses: actions/setup-node@v4
         with:
-          node-version: 24 # Using Node 24 to adhere to active GitHub Action runner defaults
-          cache: 'npm'     # Correctly targeting your npm architecture lock structure
+          node-version: 24 # Full Node 24 configuration to clear EOL warnings
 
-      - name: 🛠️ Install Dependencies
-        run: npm ci        # Clean install using package-lock.json
+      - name: 🛠️ Install Project Dependencies
+        run: npm install  # Standard execution creates a clean workspace on the fly
 
       - name: 🎭 Install Playwright Chromium
         run: npx playwright install chromium
