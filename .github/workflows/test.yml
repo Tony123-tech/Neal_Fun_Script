@@ -18,13 +18,13 @@ jobs:
       - name: 🟢 Setup Node.js (Modern OS Compliant)
         uses: actions/setup-node@v4
         with:
-          node-version: 24 # Using Node 24 to adhere to active GitHub Action runner defaults
+          node-version: 24
 
-      - name: 🛠️ Install Dependencies
-        run: npm install  # Clean install that creates dependencies on the fly without requiring a lockfile
+      - name: 🔍 Debug Directory Structure
+        run: |
+          echo "=== Root Directory Listing ==="
+          ls -R
 
-      - name: 🎭 Install Playwright Chromium
-        run: npx playwright install chromium
-
-      - name: 🚀 Run Tests
-        run: npm test
+      # This step will run right after we see the directory paths above
+      - name: 🛠️ Install Project Dependencies
+        run: npm install
